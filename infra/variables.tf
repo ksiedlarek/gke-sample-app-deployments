@@ -1,9 +1,9 @@
 variable "project_id" {
   description = "project id"
-  type = string
+  type        = string
 }
 
 variable "region" {
   description = "region"
-  type = string
+  type        = string
 }
