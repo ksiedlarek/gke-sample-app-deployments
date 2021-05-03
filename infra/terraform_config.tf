@@ -13,8 +13,12 @@ terraform {
   backend "remote" {
     organization = "gcp-demo-ksiedlarek"
 
+    # workspaces {
+    #   name = "gke-sample-app-deployments"
+    # }
     workspaces {
-      name = "gke-sample-app-deployments"
+      name = "gke-sample-app-deployment-cli"
     }
   }
+
 }
