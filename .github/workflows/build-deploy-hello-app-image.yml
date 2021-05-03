@@ -49,13 +49,11 @@ jobs:
     needs: setup-build-publish
     defaults:
       run:
-        working-directory: ./infra/
+        working-directory: infra
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Change directory
-        run: cd infra/
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
