@@ -10,6 +10,7 @@ env:
   PROJECT_ID: "deployment-demo-311509"
   IMAGE: hello-app
   TAG: v1
+  TF_ACTION_WORKING_DIR: infra/
 
 jobs:
   setup-build-publish:
