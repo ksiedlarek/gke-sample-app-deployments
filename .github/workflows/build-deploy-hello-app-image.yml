@@ -71,7 +71,7 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan -no-color -var="tag=$TAG"
+        run: terraform plan -no-color
         continue-on-error: true
 
       - name: Terraform Plan Status
@@ -80,4 +80,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/gke-terraform-deploy' && github.event_name == 'push'
-        run: terraform apply -auto-approve -var="tag=$TAG"
+        run: terraform apply -auto-approve
