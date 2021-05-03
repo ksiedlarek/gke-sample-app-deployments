@@ -13,7 +13,7 @@ env:
 
 jobs:
   setup-build-publish:
-    name: Setup, Build and Publish
+    name: Container image - setup, build and publish
     runs-on: ubuntu-latest
     steps:
 
