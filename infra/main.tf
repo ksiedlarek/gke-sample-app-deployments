@@ -1,4 +1,1 @@
-resource "google_container_registry" "registry" {
-  project  = var.project_id
-  location = "EU"
-}
+# any infrastructure components can be added here if needed
