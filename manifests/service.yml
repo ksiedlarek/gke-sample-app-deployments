@@ -22,6 +22,7 @@ spec:
   type: LoadBalancer
   ports:
   - port: 80
+  - target_port: 8080
   selector:
     app: hello-app
 # [END container_helloapp_service_load_balancer]
