@@ -1,5 +1,5 @@
 commonLabels:
      app: hello-app
 resources:
-   - deployment.yaml
-   - service.yaml
+   - deployment.yml
+   - service.yml
