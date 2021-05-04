@@ -11,5 +11,4 @@ variable "region" {
 variable "tag" {
   description = "current application tag"
   type = string
-  #default = "v1"
 }
