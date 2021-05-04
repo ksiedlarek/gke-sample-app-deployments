@@ -14,6 +14,7 @@ env:
   DEPLOYMENT_NAME: hello-app # Add your deployment name here.
 
 jobs:
+
   setup-build-publish:
     name: Setup, Build and Publish
     runs-on: ubuntu-latest
@@ -44,9 +45,15 @@ jobs:
     - name: Publish
       run: |-
         docker push "gcr.io/$PROJECT_ID/$IMAGE:$TAG"
+
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    needs:
+      - setup-build-publish
+    environment:
+      - dev
+
     steps:
 
     - name: Checkout
