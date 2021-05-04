@@ -49,10 +49,9 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    needs:
-      - setup-build-publish
+    needs: setup-build-publish
     environment:
-      - dev
+      name: dev
 
     steps:
 
