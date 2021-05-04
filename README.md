@@ -8,3 +8,10 @@ https://github.com/GoogleCloudPlatform/kubernetes-engine-samples
 Before running it, you need to have GCP project with GKE cluster. Additional steps are required on repository level to make it work with GitHub Actions and Terraform.
 
 This infrastructure is only a demo, it does not contain production-ready environment.
+
+
+
+# Workflow status
+[![.github/workflows/build-deploy-hello-app-image.yml](https://github.com/ksiedlarek/gke-sample-app-deployments/actions/workflows/build-deploy-hello-app-image.yml/badge.svg?branch=gke-terraform-deploy)](https://github.com/ksiedlarek/gke-sample-app-deployments/actions/workflows/build-deploy-hello-app-image.yml)
+
+[![.github/workflows/build-hello-app-image.yml](https://github.com/ksiedlarek/gke-sample-app-deployments/actions/workflows/build-hello-app-image.yml/badge.svg)](https://github.com/ksiedlarek/gke-sample-app-deployments/actions/workflows/build-hello-app-image.yml)
