@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: hello-app
-        image: gcr.io/google-samples/hello-app:1.0
+        image: gcr.io/PROJECT_ID/IMAGE:TAG
         ports:
         - containerPort: 8080
         resources:
