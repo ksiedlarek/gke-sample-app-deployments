@@ -8,9 +8,13 @@ on:
 
 env:
   PROJECT_ID: "deployment-demo-311509"
-  IMAGE: hello-app
-  TAG: v1
-  ENVIRONMENT: dev
+  PROJECT_NAME: "deployment-demo"
+  IMAGE: "hello-app"
+  TAG: "v1"
+  ENVIRONMENT: "dev"
+  APP_LINK: "https://12factor.net/"
+  VALIDATION_REPO: "ksiedlarek/gcp-deployment-validation"
+  TRIGGER_VALIDATION: false
 
 jobs:
   setup-build-publish:
@@ -103,3 +107,23 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/gke-terraform-deploy' && github.event_name == 'push'
         run: terraform apply -auto-approve
+
+  send-dispatch-event:
+    if: env.TRIGGER_VALIDATION
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repository: ${{ env.VALIDATION_REPO }}
+          event-type: deployment-validation
+          client-payload: |
+            {
+              "ref": "${{ github.ref }}",
+              "sha": "${{ github.sha }}",
+              "project_name": "${{ env.PROJECT_NAME }}",
+              "app_link": "${{ env.APP_LINK }}",
+              "run_id": "${{ github.run_id }}",
+              "repo": "${{ github.repository }}"
+            }
