@@ -13,8 +13,9 @@ env:
   TAG: "v1"
   ENVIRONMENT: "dev"
   APP_LINK: "https://12factor.net/"
+  LB_IP: ""
   VALIDATION_REPO: "ksiedlarek/gcp-deployment-validation"
-  TRIGGER_VALIDATION: false
+  TRIGGER_VALIDATION: true
 
 jobs:
   setup-build-publish:
@@ -107,6 +108,9 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/gke-terraform-deploy' && github.event_name == 'push'
         run: terraform apply -auto-approve
+      
+      - name: Save output link
+        run: echo "LB_IP=$(terraform output -json lb_ip)" >> $GITHUB_ENV
 
   send-dispatch-event:
     if: env.TRIGGER_VALIDATION
@@ -123,7 +127,7 @@ jobs:
               "ref": "${{ github.ref }}",
               "sha": "${{ github.sha }}",
               "project_name": "${{ env.PROJECT_NAME }}",
-              "app_link": "${{ env.APP_LINK }}",
+              "app_link": "${{ env.LB_IP }}",
               "run_id": "${{ github.run_id }}",
               "repo": "${{ github.repository }}"
             }
