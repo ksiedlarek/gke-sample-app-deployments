@@ -111,7 +111,10 @@ jobs:
         run: terraform apply -auto-approve
       
       - name: Save output link
-        run: echo "LB_IP=$(terraform output -raw lb_ip)" >> $GITHUB_ENV
+        run: |
+          output=$(terraform output -raw lb_ip)
+          echo "$output"
+          echo "LB_IP=$output" >> $GITHUB_ENV
 
   send-dispatch-event:
     runs-on: ubuntu-latest
