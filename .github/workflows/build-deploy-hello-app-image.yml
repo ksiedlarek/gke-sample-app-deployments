@@ -113,7 +113,7 @@ jobs:
         run: echo "LB_IP=$(terraform output -json lb_ip)" >> $GITHUB_ENV
 
   send-dispatch-event:
-    if: ${{ env.TRIGGER_VALIDATION }}
+    if: ${{ env.TRIGGER_VALIDATION == true }}
     runs-on: ubuntu-latest
     steps:
       - name: Repository Dispatch
