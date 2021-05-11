@@ -5,7 +5,7 @@ The purpose of this repository is to show how automatic build and deployment of 
 
 ## Diagram
 
-<img src="/docs/img/deployment_1.png" width="200%">
+<img src="/docs/img/deployment_1.png" width="600px" height="300px">
 
 ## Setup
 
