@@ -5,7 +5,7 @@ The purpose of this repository is to show how automatic build and deployment of 
 
 ## Diagram
 
-<img src="/docs/img/deployment_3.png" width="auto" margin="auto">
+<img src="/docs/img/deployment.png" width="auto" margin="auto">
 
 ## Setup
 
@@ -45,7 +45,7 @@ To be able to replicate [terraform pipeline](https://github.com/ksiedlarek/gke-s
         - GOOGLE_CREDENTIALS (check: sensitive, paste here your GCP service account json credentials, you have to remove blank lines from that file or it won't work)
     - In your account profile, go to [User Settings -> Tokens](https://www.terraform.io/docs/cloud/users-teams-organizations/users.html). Create token that will be used by GitHub Actions. Save the value for later use.
 2. Navigate to terraform directory (infra/):
-    - change backend configuration in config/dev/backend.tfvars (organization name and workspace name)
+    - change backend configuration in config/dev/backend.tfvars (change: organization name and workspace name)
 3. Navigate to .github/workflows/, open build-deploy-hello-app-image.yml:
     - Set environment variables to match your setup:
         - PROJECT_ID (your GCP project id)
@@ -58,7 +58,7 @@ To be able to replicate [terraform pipeline](https://github.com/ksiedlarek/gke-s
     - On Environments tab:
         - Create new environment, with name "dev"
         - On environment protection rules click on checkbox "Required reviewers" and add yourself
-        - Add gke-terraform-deploy branch to Branch protection rules
+        - Add gke-terraform-deploy branch to [Branch protection rules](https://docs.github.com/en/github/administering-a-repository/managing-a-branch-protection-rule)
 5. Fork (or clone and set up on GitHub) [validation repo](https://github.com/ksiedlarek/gcp-deployment-validation)
 6. On validation repo:
     - Go to Repository Settings tab -> Secrets, and add:
