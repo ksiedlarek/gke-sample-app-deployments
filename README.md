@@ -78,3 +78,5 @@ To be able to replicate [terraform pipeline](https://github.com/ksiedlarek/gke-s
 
 
 **This infrastructure is only a demo, it does not contain production-ready environment.**
+
+**This infrastructure will generate costs, check [GCP documentation](https://cloud.google.com/kubernetes-engine/pricing) to learn more.**
