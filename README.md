@@ -5,7 +5,7 @@ The purpose of this repository is to show how automatic build and deployment of 
 
 ## Diagram
 
-![Diagram](/docs/img/deployment_1.svg "Diagram")
+![Diagram](/docs/img/deployment_1.png "Diagram")
 
 ## Setup
 
