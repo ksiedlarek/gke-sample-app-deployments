@@ -1,12 +1,13 @@
-# Purpose
+# GKE - Sample app deployment
 
+## Purpose
 The purpose of this repository is to show how automatic build and deployment of sample application can be done in GCP environment, using GitHub Actions and Terraform Cloud.
 
-# Diagram
+## Diagram
 
-![Diagram](/docs/img/deployment.svg "Diagram")
+![Diagram](/docs/img/deployment_1.svg "Diagram" =200x100)
 
-# Setup
+## Setup
 
 Sample application is taken from offical Google resources:
 https://github.com/GoogleCloudPlatform/kubernetes-engine-samples.
