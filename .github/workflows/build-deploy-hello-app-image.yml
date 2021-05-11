@@ -12,8 +12,7 @@ env:
   IMAGE: "hello-app"
   TAG: "v1"
   ENVIRONMENT: "dev"
-  APP_LINK: "https://12factor.net/"
-  LB_IP: ""
+  APP_LINK: ""
   VALIDATION_REPO: "ksiedlarek/gcp-deployment-validation"
   TRIGGER_VALIDATION: true
 
@@ -72,7 +71,7 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan #-no-color
+        run: terraform plan
         continue-on-error: true
 
       - name: Terraform Plan Status
@@ -114,7 +113,7 @@ jobs:
         run: |
           output=$(terraform output -raw lb_ip)
           echo "$output"
-          echo "LB_IP=$output" >> $GITHUB_ENV
+          echo "APP_LINK=$output" >> $GITHUB_ENV
       
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
@@ -128,7 +127,7 @@ jobs:
               "ref": "${{ github.ref }}",
               "sha": "${{ github.sha }}",
               "project_name": "${{ env.PROJECT_NAME }}",
-              "app_link": "${{ env.LB_IP }}",
+              "app_link": "${{ env.APP_LINK }}",
               "run_id": "${{ github.run_id }}",
               "repo": "${{ github.repository }}"
             }

@@ -1,6 +1,10 @@
 # Purpose
 
-The purpose of this repository is to show how automatic build and deployment can be done in GCP environment, using GitHub Actions and Terraform Cloud.
+The purpose of this repository is to show how automatic build and deployment of sample application can be done in GCP environment, using GitHub Actions and Terraform Cloud.
+
+# Diagram
+
+![Diagram](/docs/img/deployment.svg "Diagram")
 
 # Setup
 
@@ -8,6 +12,8 @@ Sample application is taken from offical Google resources:
 https://github.com/GoogleCloudPlatform/kubernetes-engine-samples.
 
 We are using [hello-app](https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/master/hello-app) written in Golang.
+
+Terraform Cloud integration was set up based on official HashiCorp [tutorials](https://learn.hashicorp.com/tutorials/terraform/github-actions) and documentation.
 
 This repository has two branches - each shows different way of deployment to GKE:
 - main branch: deployment without terraform, using kubectl (work in progress)
