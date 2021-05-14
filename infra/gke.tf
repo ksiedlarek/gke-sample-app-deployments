@@ -2,14 +2,14 @@
 resource "kubernetes_namespace" "hello_app" {
   metadata {
     annotations = {
-      name = "hello-app"
+      name = var.app_name
     }
 
     labels = {
-      app = "hello-app"
+      app = var.app_name
     }
 
-    name = "hello-app"
+    name = var.app_name
   }
   timeouts {
     delete = 0
@@ -18,29 +18,28 @@ resource "kubernetes_namespace" "hello_app" {
 
 resource "kubernetes_deployment" "hello_app" {
     metadata {
-    name = "hello-app"
+    name = var.app_name
     namespace = kubernetes_namespace.hello_app.metadata[0].name
     labels = {
-      app = "hello-app"
+      app = var.app_name
     }
   }
   spec {
     replicas = 2
     selector {
       match_labels = {
-        app = "hello-app"
-      }
+        app = var.app_name
     }
     template {
       metadata {
         labels = {
-          app = "hello-app"
+          app = var.app_name
         }
       }
       spec {
         container {
-          image = "gcr.io/${var.project_id}/hello-app:${var.tag}"
-          name  = "hello-app"
+          image = "gcr.io/${var.project_id}/${var.app_name}:${var.tag}"
+          name  = var.app_name
 
           port {
             container_port = 8080
@@ -58,7 +57,7 @@ resource "kubernetes_deployment" "hello_app" {
 
 resource "kubernetes_service" "hello_app" {
   metadata {
-    name = "hello-app"
+    name = var.app_name
     namespace = kubernetes_namespace.hello_app.metadata[0].name
   }
   spec {
