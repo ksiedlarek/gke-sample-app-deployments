@@ -17,8 +17,8 @@ resource "kubernetes_namespace" "hello_app" {
 }
 
 resource "kubernetes_deployment" "hello_app" {
-    metadata {
-    name = var.app_name
+  metadata {
+    name      = var.app_name
     namespace = kubernetes_namespace.hello_app.metadata[0].name
     labels = {
       app = var.app_name
@@ -47,7 +47,7 @@ resource "kubernetes_deployment" "hello_app" {
           }
           resources {
             requests = {
-              cpu    = "250m"
+              cpu = "250m"
             }
           }
         }
