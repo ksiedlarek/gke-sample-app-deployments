@@ -17,8 +17,8 @@ resource "kubernetes_namespace" "hello_app" {
 }
 
 resource "kubernetes_deployment" "hello_app" {
-  metadata {
-    name      = var.app_name
+    metadata {
+    name = var.app_name
     namespace = kubernetes_namespace.hello_app.metadata[0].name
     labels = {
       app = var.app_name
@@ -37,17 +37,18 @@ resource "kubernetes_deployment" "hello_app" {
           app = var.app_name
         }
       }
-    }
-    spec {
-      container {
-        image = "gcr.io/${var.project_id}/${var.app_name}:${var.tag}"
-        name  = var.app_name
-        port {
-          container_port = 8080
-        }
-        resources {
-          requests = {
-            cpu = "250m"
+      spec {
+        container {
+          image = "gcr.io/${var.project_id}/${var.app_name}:${var.tag}"
+          name  = var.app_name
+
+          port {
+            container_port = 8080
+          }
+          resources {
+            requests = {
+              cpu    = "250m"
+            }
           }
         }
       }
