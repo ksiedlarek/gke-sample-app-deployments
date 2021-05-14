@@ -30,25 +30,24 @@ resource "kubernetes_deployment" "hello_app" {
       match_labels = {
         app = var.app_name
       }
-      template {
-        metadata {
-          labels = {
-            app = var.app_name
-          }
+    }
+    template {
+      metadata {
+        labels = {
+          app = var.app_name
         }
-        spec {
-          container {
-            image = "gcr.io/${var.project_id}/${var.app_name}:${var.tag}"
-            name  = var.app_name
-
-            port {
-              container_port = 8080
-            }
-            resources {
-              requests = {
-                cpu = "250m"
-              }
-            }
+      }
+    }
+    spec {
+      container {
+        image = "gcr.io/${var.project_id}/${var.app_name}:${var.tag}"
+        name  = var.app_name
+        port {
+          container_port = 8080
+        }
+        resources {
+          requests = {
+            cpu = "250m"
           }
         }
       }
