@@ -40,7 +40,8 @@ To be able to replicate [terraform pipeline](https://github.com/ksiedlarek/gke-s
     - Apply method: Manual Apply
     - Set Namespace [variables](https://www.terraform.io/docs/cloud/workspaces/variables.html): 
         - project_id (your project id)
-        - region (region that should be the same as one used by your GKE cluster)
+        - region and zone (should be the same as one used by your GKE cluster)
+        - gke_cluster_name (name of your GKE cluster)
     - Set Namespace Environment Variables:
         - GOOGLE_CREDENTIALS (check: sensitive, paste here your GCP service account json credentials, you have to remove blank lines from that file or it won't work)
     - In your account profile, go to [User Settings -> Tokens](https://www.terraform.io/docs/cloud/users-teams-organizations/users.html). Create token that will be used by GitHub Actions. Save the value for later use.
