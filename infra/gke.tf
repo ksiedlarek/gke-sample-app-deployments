@@ -67,7 +67,7 @@ resource "kubernetes_service" "hello_app" {
     }
     port {
       port        = 80
-      target_port = 8080
+      target_port = 8080a
     }
 
     type = "LoadBalancer"
