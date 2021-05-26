@@ -5,6 +5,7 @@ on:
     paths:
     - 'apps/hello-app/**'
     - 'infra/**'
+    - .github/**
 
 env:
   PROJECT_ID: "deployment-demo-311509"
