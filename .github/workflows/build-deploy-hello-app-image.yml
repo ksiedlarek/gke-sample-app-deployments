@@ -17,6 +17,13 @@ env:
   TRIGGER_VALIDATION: true
 
 jobs:
+  show-run-id:
+    name: Display run id
+    runs-on: ubuntu-latest
+    steps:
+    - name: Display run id
+      run: echo "${{ github.run_id }}"
+
   setup-build-publish:
     name: Container image - setup, build and publish
     runs-on: ubuntu-latest
